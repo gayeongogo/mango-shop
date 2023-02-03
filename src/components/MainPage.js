@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./MainPage.css"
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const MainPage = () => {
     let [products, setProducts] = useState([]);
@@ -32,28 +33,30 @@ const MainPage = () => {
                     {products.map((product, idx) => {
                         //console.log(product)
                         return (
-                            <div className="product-card" key={idx}>{/* 반복해서 돌릴것-> unique key 값 지정 */}
-                                <div>
-                                    <img src={product.imageUrl} alt={product.name} className="product-img" />
+                            <Link className="product-link" to={`/ProductPage/${idx}`}>
+                                <div className="product-card" key={idx}>{/* 반복해서 돌릴것-> unique key 값 지정 */}
+                                    <div>
+                                        <img src={product.imageUrl} alt={product.name} className="product-img" />
+                                    </div>
+                                    <div className="product-contents">
+                                        <span className="product-name">{product.name}</span>
+                                        <span className="product-price">{product.price}</span>
+                                        <span className="product-seller">
+                                            <img className="product-avatar" src="./images/icons/avatar.png" alt="" />
+                                            <span>{product.seller}</span>
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className="product-contents">
-                                    <span className="product-name">{product.name}</span>
-                                    <span className="product-price">{product.price}</span>
-                                    <span className="product-seller">
-                                        <img className="product-avatar" src="./images/icons/avatar.png" alt="" />
-                                        <span>{product.seller}</span>
-                                    </span>
-                                </div>
-                            </div>
+                            </Link>
                         )
                     })}
                 </div>
             </div>
             <div id="footer">
-                <a href="#!">회사소개</a>
-                <a href="#!">이용약관</a>
-                <a href="#!">통신판매업:123-1234</a>
-                <a href="#!">사업자등록번호:456-56-789654</a>
+                <Link to="/about">회사소개</Link>
+                <Link to="/policy">이용약관</Link>
+                <Link to="/sales">통신판매업:123-1234</Link>
+                <Link to="/license">사업자등록번호:456-56-789654</Link>
             </div>
         </div>
         
