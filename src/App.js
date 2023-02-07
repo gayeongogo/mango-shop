@@ -1,17 +1,21 @@
 import './App.css';
 import React from 'react';
 import MainPage from './components/MainPage';
-import {Route, Routes, Link} from 'react-router-dom';
+import {Route, Routes, Link, useNavigate} from 'react-router-dom';
 import ProductPage from './components/ProductPage';
 import UploadPage from './components/UploadPage';
+import { Button } from "antd";
+import { DownloadOutlined } from '@ant-design/icons';
 
 function App() {
   /* https://0a529599-0246-453b-9f69-c43532db7fa2.mock.pstmn.io */
+  let navigate = useNavigate();
   return (
     <div className="App">
        <div id="header">
             <div id="header-area">
                 <Link to="/"><img src="./images/icons/logo.png" alt="" /></Link>
+                <Button size='large' icon={<DownloadOutlined />} onClick={() => navigate('/UploadPage')}>상품 업로드</Button>
             </div>
         </div>
         <div id="body">

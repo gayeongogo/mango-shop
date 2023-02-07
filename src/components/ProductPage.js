@@ -9,14 +9,14 @@ const ProductPage = () => {
     const navigate = useNavigate();
     const [product, setProduct] = useState(null);
     useEffect(() => {
-        axios.get(`https://0a529599-0246-453b-9f69-c43532db7fa2.mock.pstmn.io/products/${id}`)
+        axios.get(`https://aaaf9458-4e94-4bbc-be94-b70f2efd3b65.mock.pstmn.io/products/${id}`)
         .then((result) => {
             setProduct(result.data)
         }).catch((error) => {
             console.error(error)
-        }, [id])
+        })
         //console.log(product)
-    })
+    }, [id])
 
     if(product==null) {
         return <h1>상품정보를 받고 있습니다.</h1>

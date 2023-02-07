@@ -7,7 +7,7 @@ const MainPage = () => {
     let [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get("https://0a529599-0246-453b-9f69-c43532db7fa2.mock.pstmn.io/products")
+        axios.get("http://localhost:8080/products/")
         .then((result) => {
             products=result.data.products;//products data값
             setProducts(products);
